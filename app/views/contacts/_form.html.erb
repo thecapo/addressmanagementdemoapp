@@ -1,0 +1,14 @@
+<div class="container">
+  <%= simple_form_for @contact do |c| %>
+    <%= c.input :last_name %>
+    <%= c.input :first_name %>
+    <%= c.input :address1 %>
+    <%= c.input :address2 %>
+    <%= c.input :city %>
+    <%= c.input :zip %>
+    <%= c.input :country %>
+    <%= c.input :telephone %>
+    <%= c.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
+

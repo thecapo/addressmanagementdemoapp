@@ -1,0 +1,22 @@
+<div class="container">
+  <br/>
+  <h3><%= @contact.last_name %></h3>
+  <h5><%= @contact.first_name %></h5>
+  <br/><br/>
+  <h6>Address 1: <h6>
+    <p><%= @contact.address1 %></p>
+    <p><%= @contact.address2 %></p>
+  <h6>City: <h6>
+    <p><%= @contact.city %></p>
+  <h6>Zip: <h6>
+    <p><%= @contact.zip %></p>
+  <h6>Country: <h6>
+    <p><%= @contact.country %></p>
+  <h6>Contact: <h6>
+    <p><%= @contact.telephone %></p>
+
+  <%= link_to 'Edit', edit_contact_path(@contact) %>
+  <%= link_to 'Delete', contact_path(@contact), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'Back', contacts_path %>
+</div>
+

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h1>Contacts#index</h1>
+  <table class="table">
+    <thead>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th>Contact Number</th>
+    </thead>
+      <% @contacts.each do |contact| %>
+    <tr>  
+        <td><%= contact.last_name %></td>
+        <td><%= contact.first_name %></td>
+        <td><%= contact.address1 %></td>
+        <td><%= contact.address2 %></td>
+        <td><%= contact.city %></td>
+        <td><%= contact.zip %></td>
+        <td><%= contact.country %></td>
+        <td><%= contact.telephone %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Show', contact_path(contact) %></td>
+        <td><%= link_to 'Delete', contact_path(contact), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <% end %> 
+    </tr>
+  </table>
+</div>
+
