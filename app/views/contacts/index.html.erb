@@ -1,5 +1,15 @@
 <div class="container-fluid">
-  <h1>Contacts#index</h1>
+ 
+    <%= form_tag(contacts_path, method: :get) do %>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span><%= submit_tag 'Search', class:'form-control btn btn-primary', name: nil %></span>
+        </div>
+          <%= text_field_tag :term, params[:term], class:'form-control', placeholder: "Enter Name" %>       
+      </div>
+    <% end %>
+ 
+  <h4>Contacts  <%= link_to '+', new_contact_path, class:"btn btn-primary" %></h4>
   <table class="table">
     <thead>
       <th>Last Name</th>
@@ -21,9 +31,13 @@
         <td><%= contact.zip %></td>
         <td><%= contact.country %></td>
         <td><%= contact.telephone %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
         <td><%= link_to 'Show', contact_path(contact) %></td>
-        <td><%= link_to 'Delete', contact_path(contact), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <% if can? :update, contact %>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <% end %>
+        <% if can? :destroy, contact %>
+          <td><%= link_to 'Delete', contact_path(contact), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <% end %>
       <% end %> 
     </tr>
   </table>
