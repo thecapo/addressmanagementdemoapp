@@ -3,7 +3,11 @@ class ContactsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @contacts = Contact.search(params[:term])
+    if params[:term].present?
+      @contacts = Contact.search(params[:term])
+    else
+      @contacts = Contact.all 
+    end
   end
 
   def new
